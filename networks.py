@@ -9,6 +9,7 @@ import math
 import utils
 import matplotlib.pyplot as plt
 import numpy as np
+from transgan_shading import TransShadingNet 
 
 # Decide which device we want to run on
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -101,6 +102,8 @@ def define_G(rdrr, netG, init_type='normal', init_gain=0.02, gpu_ids=[]):
         net = DCGAN(rdrr)
     elif netG == 'plain-unet':
         net = UNet(rdrr)
+    elif netG=='Trans_Gan':
+        net = TransShadingNet(rdrr)
     elif netG == 'huang-net':
         net = HuangNet(rdrr)
     elif netG == 'zou-fusion-net':

@@ -103,7 +103,7 @@ def define_G(rdrr, netG, init_type='normal', init_gain=0.02, gpu_ids=[]):
     elif netG == 'plain-unet':
         net = UNet(rdrr)
     elif netG=='Trans_Gan':
-        net = TransShadingNet(rdrr)
+        net = TransShadingNet(rdrr,dim_base=128)
     elif netG == 'huang-net':
         net = HuangNet(rdrr)
     elif netG == 'zou-fusion-net':

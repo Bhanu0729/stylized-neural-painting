@@ -110,5 +110,6 @@ def optimize_x(pt):
 if __name__ == '__main__':
 
     pt = ProgressivePainter(args=args)
+    torch.autograd.set_detect_anomaly(True)
     optimize_x(pt)
 

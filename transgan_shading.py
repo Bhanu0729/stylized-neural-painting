@@ -42,7 +42,7 @@ class TransShadingNet(nn.Module):
     def __init__(self,rdrr,dim_base=128, depth=(4,4,2)):
         super().__init__()
         self.rderr = rdrr                      # save renderer reference if needed
-        self.out_size = rdrr.out_size          # used for final output size
+        self.out_size = 128         # used for final output size
         self.token_fc = nn.Linear(12, dim_base*8)           # 12‑D → 8·d tokens
         self.stage1   = nn.ModuleList([TransformerBlock(dim_base*8) for _ in range(depth[0])])
         self.stage2   = nn.ModuleList([TransformerBlock(dim_base*2) for _ in range(depth[1])])

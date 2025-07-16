@@ -54,7 +54,7 @@ class TransShadingNet(nn.Module):
 
         # Final RGB and Alpha heads
         self.to_rgb   = nn.Linear(dim_base//2, 3)
-        self.to_alpha = nn.Linear(dim_base//2, 1)
+        self.to_alpha = nn.Linear(dim_base//2, 3)
 
         self.start_H = self.start_W = 8  # 8×8 → 128×128 via 2×2 upsampling and bicubic
 
@@ -88,6 +88,6 @@ class TransShadingNet(nn.Module):
 
         # Permute to match output shape
         rgb   = rgb.permute(0, 3, 1, 2)            # (B,3,H,W)
-        alpha = alpha.permute(0, 3, 1, 2)          # (B,1,H,W)
+        alpha = alpha.permute(0, 3, 1, 2)          # (B,3,H,W)
 
         return rgb, alpha

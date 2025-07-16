@@ -87,7 +87,7 @@ class TransShadingNet(nn.Module):
         alpha = torch.sigmoid(self.to_alpha(x))   # (B,128,128,1)
 
         # Permute to match output shape
-        rgb   = rgb.permute(0, 3, 1, 2)            # (B,3,H,W)
-        alpha = alpha.permute(0, 3, 1, 2)          # (B,3,H,W)
+        rgb   = rgb.permute(0, 3, 1, 2).contiguous()            # (B,3,H,W)
+        alpha = alpha.permute(0, 3, 1, 2).contiguous()          # (B,3,H,W)
 
         return rgb, alpha
